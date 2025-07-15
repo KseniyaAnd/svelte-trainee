@@ -36,10 +36,9 @@ button, input[type="submit"] {
     cursor: pointer;
 }
 
-body {
-    margin: 0;
+.wrapper {
+    margin: 10px 0 0 0;
     padding: 0;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
