@@ -44,6 +44,6 @@ button, input[type="submit"] {
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 25px;
+    gap: 15px;
     background-color: #ffffff;
 }

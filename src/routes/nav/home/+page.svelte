@@ -1,5 +1,5 @@
 <script>
-    import Home from "$lib/Home.svelte";
+    import Home from "$lib/Components/Home.svelte";
 </script>
 
 <Home />
