@@ -35,15 +35,15 @@
         }
     ];
 
-    function handleAdd(event) {
-        tasks = [...tasks, event.detail];
+    function handleAdd(task) {
+        tasks = [...tasks, task];
     }
 </script>
 
 <h2 class="task-title">Tasks to do</h2>
 <div class="tasks">
     <TaskList tasks={tasks}/>
-    <TaskForm on:addTask={handleAdd}/>
+    <TaskForm addTask={handleAdd}/>
 </div>
 
 

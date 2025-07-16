@@ -1,18 +1,16 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
-    const dispatch = createEventDispatcher();
 
-    let taskName = "";
-    let taskDescription = "";
+    let taskName = $state('');
+    let taskDescription = $state('');
 
+    let {addTask} = $props();
     function handleAddTask() {
-        dispatch('addTask', {
+        addTask( {
             id: Math.random(),
             name: taskName,
             description: taskDescription,
             state: false,
         });
-
         taskName = "";
         taskDescription = "";
     }
