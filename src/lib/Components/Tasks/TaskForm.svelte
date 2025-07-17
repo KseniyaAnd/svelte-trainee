@@ -1,25 +1,28 @@
 <script>
+    import {tasksStore} from "$lib/Stores/taskStore.js";
 
-    let taskName = $state('');
-    let taskDescription = $state('');
+    let newTask = $state({
+        id: Math.floor(Math.random() * 100),
+        name: '',
+        description: '',
+        state: false,
+    });
 
-    let {addTask} = $props();
-    function handleAddTask() {
-        addTask( {
-            id: Math.random(),
-            name: taskName,
-            description: taskDescription,
-            state: false,
-        });
-        taskName = "";
-        taskDescription = "";
+    function hendle(event){
+        event.preventDefault();
+
+        tasksStore.addTask({...newTask})
+
+        newTask.id = Math.floor(Math.random() * 100);
+        newTask.name = '';
+        newTask.description = '';
     }
 </script>
 
-<form on:submit|preventDefault={handleAddTask}>
+<form onsubmit={hendle}>
     <div class="form-group">
-        <input type="text" placeholder="Enter task name" bind:value={taskName}/>
-        <textarea placeholder="Enter task description" bind:value={taskDescription}></textarea>
+        <input type="text" placeholder="Enter task name" bind:value={newTask.name}/>
+        <textarea placeholder="Enter task description" bind:value={newTask.description}></textarea>
         <button type="submit">Add task</button>
     </div>
 </form>

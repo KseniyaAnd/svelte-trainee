@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
     import TaskItem from "$lib/Components/Tasks/TaskItem.svelte";
+    import {tasksStore} from "$lib/Stores/taskStore.js";
 
-    export let tasks;
 </script>
 
 <div class="task-list">
-    {#each tasks as task}
+    {#each $tasksStore as task}
         <TaskItem task={task}/>
     {/each}
 </div>
