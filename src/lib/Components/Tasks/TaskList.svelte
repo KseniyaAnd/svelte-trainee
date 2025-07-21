@@ -1,7 +1,6 @@
 <script lang="ts">
     import TaskItem from "$lib/Components/Tasks/TaskItem.svelte";
     import {tasksStore} from "$lib/Stores/taskStore.js";
-
 </script>
 
 <div class="task-list">

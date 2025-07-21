@@ -8,8 +8,12 @@
         state: false,
     });
 
-    function hendle(event){
+    let validity = $derived(() => !isNameTouched || newTask.name.trim().length > 3);
+    let isNameTouched = $state(false);
+
+    function hendle(event) {
         event.preventDefault();
+        if (!validity) return;
 
         tasksStore.addTask({...newTask})
 
@@ -21,17 +25,27 @@
 
 <form onsubmit={hendle}>
     <div class="form-group">
-        <input type="text" placeholder="Enter task name" bind:value={newTask.name}/>
+        <input type="text" placeholder="Enter task name" class={validity() ? "" : "invalid"} bind:value={newTask.name} oninput={() => isNameTouched = true}/>
         <textarea placeholder="Enter task description" bind:value={newTask.description}></textarea>
-        <button type="submit">Add task</button>
+        <button type="submit" disabled={!validity()}>Add task</button>
     </div>
 </form>
 
 <style>
+    .invalid {
+        background-color: #ffdddd;
+        border-color: #ff0000;
+    }
+
     .form-group {
         display: flex;
         flex-direction: column;
         gap: 12px;
+    }
+
+    .form-group input:invalid {
+        background-color: #ffdddd;
+        border-color: #ff0000;
     }
 
     .form-group input,
@@ -68,5 +82,10 @@
 
     .form-group button:hover {
         background-color: #005fa3;
+    }
+
+    .form-group button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
     }
 </style>
