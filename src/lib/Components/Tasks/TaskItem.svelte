@@ -1,17 +1,26 @@
 <script>
     export let task;
-    import {tasksStore} from "$lib/Stores/taskStore.js";
+    import { tasksStore } from "$lib/Stores/taskStore.js";
 </script>
 
 <div class="task-item">
     <div class="task-item__checkbox">
-        <input type="checkbox" checked={task.state} oninput={() =>tasksStore.setTaskState(task.id, !task.state)}/>
-        <p>{task.name}</p>
+        <input
+                type="checkbox"
+                bind:checked={task.state}
+                on:input={() => tasksStore.setTaskState(task.id, !task.state)}
+        />
+        <p class:checked={task.state}>{task.name}</p>
     </div>
     <div class="task-item__description">
         <p>{task.description}</p>
     </div>
-    <input class="task-item__btn" type="submit" value="Remove" onclick={() => tasksStore.removeTask(task.id)}/>
+    <input
+            class="task-item__btn"
+            type="submit"
+            value="Remove"
+            on:click={() => tasksStore.removeTask(task.id)}
+    />
 </div>
 
 <style>
@@ -29,6 +38,18 @@
     .task-item__checkbox {
         display: flex;
         gap: 10px;
+        align-items: center;
+    }
+
+    .task-item__checkbox p {
+        transition: all 0.3s ease;
+    }
+
+    .task-item__checkbox p.checked {
+        color: #999;
+        text-decoration: line-through;
+        transform: scale(0.98);
+        opacity: 0.7;
     }
 
     .task-item__description {
