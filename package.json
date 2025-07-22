@@ -21,6 +21,7 @@
 		"vite": "^7.0.4"
 	},
 	"dependencies": {
+		"svelte-dnd-action": "^0.9.64",
 		"svelte-spa-router": "^4.0.1"
 	}
 }

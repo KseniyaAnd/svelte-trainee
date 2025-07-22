@@ -46,6 +46,7 @@ function createTasksStore() {
     }
     return {
         subscribe: tasks.subscribe,
+        set: tasks.set,
         addTask,
         removeTask,
         setTaskState,
